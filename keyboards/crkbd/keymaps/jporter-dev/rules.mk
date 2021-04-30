@@ -1,7 +1,8 @@
 RGBLIGHT_ENABLE 		= yes
-VIA_ENABLE 					= yes
+VIA_ENABLE 					= no
 OLED_DRIVER_ENABLE  = yes
 LTO_ENABLE          = yes
+EXTRAKEY_ENABLE 		= yes
 
 # SRC +=  ./lib/glcdfont.c \
 #         ./lib/rgb_state_reader.c \
