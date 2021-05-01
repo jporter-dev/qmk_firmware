@@ -30,14 +30,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USE_SERIAL_PD2
 
-#define TAPPING_FORCE_HOLD
+#define TAPPING_TOGGLE 2
+#define TAPPING_FORCE_HOLD_PER_KEY
+#define TAPPING_TERM_PER_KEY
 #define TAPPING_TERM 250
 #define IGNORE_MOD_TAP_INTERRUPT
 #undef PERMISSIVE_HOLD
+// #define TAPPING_FORCE_HOLD
+#define ONESHOT_TAP_TOGGLE 2
 
 #ifdef RGBLIGHT_ENABLE
     #undef RGBLED_NUM
-    #define RGBLIGHT_ANIMATIONS
+    #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+    #define RGBLIGHT_LAYERS
     #define RGBLED_NUM 27
     #define RGBLIGHT_LIMIT_VAL 120
     #define RGBLIGHT_HUE_STEP 10
@@ -46,3 +51,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
+
+#define _QWERTY 0
+#define _COLEMAK 1
+#define _NUM 2
+#define _SYM 3
+#define _FN 4
