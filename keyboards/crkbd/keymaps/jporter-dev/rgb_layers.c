@@ -6,47 +6,107 @@
 //              14|13|6    6|13|14
 #ifdef RGBLIGHT_ENABLE
 
+    #define HSV_PRIMARY HSV_BLUE
+    #define HSV_SECONDARY HSV_MAGENTA
+    #define HSV_ACCENT HSV_GREEN
+    #define NUM_UNDERGLOW HSV_GOLD
+    #define SYM_UNDERGLOW HSV_SPRINGGREEN
+    #define FN_UNDERGLOW HSV_RED
+    #define NUM_ARROWS HSV_RED
+
     /************************
     *       LEFT RGBS       *
+    * 0-5 UNDERGLOW         *
+    *     24|23|18|17|10|9  *
+    *     25|22|19|16|11|8  *
+    *     26|21|20|15|12|7  *
+    *              14|13|6  *
     ************************/
     const rgblight_segment_t PROGMEM num_left_layer[] = RGBLIGHT_LAYER_SEGMENTS(
         {0,27,0,0,0},
-        {0, 6, HSV_GOLD},
+        {0, 6, NUM_UNDERGLOW},
         // pgup/pgdn/end/home
-        {7, 2, HSV_GOLD},
-        {11, 1, HSV_GOLD},
-        {19, 1, HSV_GOLD},
+        {7, 2, HSV_SECONDARY},
+        {11, 1, HSV_SECONDARY},
+        {19, 1, HSV_SECONDARY},
         // arrows
-        {12, 1, HSV_RED},
-        {15, 2, HSV_RED},
-        {20, 1, HSV_RED},
-        {21, 1, HSV_PURPLE},
+        {12, 1, NUM_ARROWS},
+        {15, 2, NUM_ARROWS},
+        {20, 1, NUM_ARROWS},
+        {21, 1, HSV_ACCENT},
         // tilde
-        {24, 1, HSV_TEAL},
+        {24, 1, HSV_ACCENT},
         // numbers
-        {9, 2, HSV_MAGENTA},
-        {17, 2, HSV_MAGENTA},
-        {23, 1, HSV_MAGENTA}
+        {9, 2, HSV_PRIMARY},
+        {17, 2, HSV_PRIMARY},
+        {23, 1, HSV_PRIMARY}
     );
     const rgblight_segment_t PROGMEM sym_left_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-        {0, 6, HSV_SPRINGGREEN}
+        {0,27,0,0,0},
+        {0, 6, SYM_UNDERGLOW},
+        // tilde
+        {24, 1, HSV_ACCENT},
+        // top row
+        {9, 2, HSV_PRIMARY},
+        {17, 2, HSV_PRIMARY},
+        {23, 1, HSV_PRIMARY}
     );
     const rgblight_segment_t PROGMEM fn_left_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-        {0, 6, HSV_MAGENTA}
+        {0,27,0,0,0},
+        {0, 6, HSV_MAGENTA},
+        // FN keys
+        {9, 2, HSV_SECONDARY},
+        {17, 2, HSV_SECONDARY},
+        {23, 2, HSV_SECONDARY},
+        // RGB toggles
+        {19, 2, HSV_ACCENT},
+        {21, 2, HSV_ACCENT},
+        // media keys
+        {8, 1, HSV_PRIMARY},
+        {11, 1, HSV_PRIMARY},
+        {16, 1, HSV_PRIMARY}
     );
 
     /************************
-    *       RIGHT RGBS       *
+    *       RIGHT RGBS      *
+    * 0-5 UNDERGLOW         *
+    *     9|10|17|18|23|24  *
+    *     8|11|16|19|22|25  *
+    *     7|12|15|20|21|26  *
+    *     6|13|14           *
     ************************/
     const rgblight_segment_t PROGMEM num_right_layer[] = RGBLIGHT_LAYER_SEGMENTS(
         {0,27,0,0,0},
-        {0, 6, HSV_GOLD}
+        {0, 6, NUM_UNDERGLOW},
+        // numbers
+        {9, 4, HSV_PRIMARY},
+        {14, 7, HSV_PRIMARY},
+        {23, 1, HSV_PRIMARY},
+        // symbols
+        {7, 1, HSV_SECONDARY},
+        {21, 2, HSV_SECONDARY},
+        {24, 3, HSV_SECONDARY}
     );
     const rgblight_segment_t PROGMEM sym_right_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-        {0, 6, HSV_SPRINGGREEN}
+        {0,27,0,0,0},
+        {0, 6, SYM_UNDERGLOW},
+        // symbols
+        {7, 6, HSV_PRIMARY},
+        {15, 9, HSV_PRIMARY},
+        // backspace
+        {24, 1, HSV_ACCENT}
     );
     const rgblight_segment_t PROGMEM fn_right_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-        {0, 6, HSV_MAGENTA}
+        {0,27,0,0,0},
+        {0, 6, HSV_MAGENTA},
+        // FN keys
+        {9, 2, HSV_SECONDARY},
+        {17, 2, HSV_SECONDARY},
+        {23, 2, HSV_SECONDARY},
+        // media keys
+        {8, 1, HSV_PRIMARY},
+        {11, 1, HSV_PRIMARY},
+        {16, 1, HSV_PRIMARY}
     );
 
     // Now define the array of layers. Later layers take precedence
@@ -75,6 +135,7 @@
     layer_state_t layer_state_set_user(layer_state_t state) {
         rgblight_set_layer_state(0, layer_state_cmp(state, _NUM));
         rgblight_set_layer_state(1, layer_state_cmp(state, _SYM));
+        rgblight_set_layer_state(2, layer_state_cmp(state, _FN));
         return state;
     }
 #endif // RGBLIGHT_ENABLE
