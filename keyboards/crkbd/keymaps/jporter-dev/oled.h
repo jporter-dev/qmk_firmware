@@ -1,5 +1,0 @@
-#define RAISE MO(_RAISE)
-#define LOWER MO(_LOWER)
-#define CTLTB CTL_T(KC_TAB)
-#define GUIEI GUI_T(KC_LANG2)
-#define ALTKN ALT_T(KC_LANG1)
