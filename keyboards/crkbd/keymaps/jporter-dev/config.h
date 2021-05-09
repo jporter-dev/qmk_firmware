@@ -57,3 +57,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define _NUM 2
 #define _SYM 3
 #define _FN 4
+
+// #define BONGO_ENABLED
