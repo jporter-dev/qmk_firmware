@@ -12,7 +12,7 @@
     #define NUM_UNDERGLOW HSV_GOLD
     #define SYM_UNDERGLOW HSV_SPRINGGREEN
     #define FN_UNDERGLOW HSV_RED
-    #define NUM_ARROWS HSV_RED
+    #define HSV_TERTIARY HSV_RED
 
     /************************
     *       LEFT RGBS       *
@@ -26,24 +26,23 @@
         {0,27,0,0,0},
         {0, 6, NUM_UNDERGLOW},
         // pgup/pgdn/end/home
-        {7, 2, HSV_SECONDARY},
-        {11, 1, HSV_SECONDARY},
-        {19, 1, HSV_SECONDARY},
+        {7, 3, HSV_SECONDARY},
+        {12, 1, HSV_SECONDARY},
         // arrows
-        {12, 1, NUM_ARROWS},
-        {15, 2, NUM_ARROWS},
-        {20, 1, NUM_ARROWS},
-        {21, 1, HSV_ACCENT},
+        {11, 1, HSV_TERTIARY},
+        {16, 2, HSV_TERTIARY},
+        {19, 1, HSV_TERTIARY},
+        {10, 1, HSV_PRIMARY},
+        {18, 1, HSV_PRIMARY},
+        // meh key
+        {22, 1, HSV_ACCENT},
         // tilde
-        {24, 1, HSV_ACCENT},
-        // numbers
-        {9, 2, HSV_PRIMARY},
-        {17, 2, HSV_PRIMARY},
-        {23, 1, HSV_PRIMARY}
+        {24, 1, HSV_ACCENT}
     );
     const rgblight_segment_t PROGMEM sym_left_layer[] = RGBLIGHT_LAYER_SEGMENTS(
         {0,27,0,0,0},
         {0, 6, SYM_UNDERGLOW},
+        {13, 1, HSV_TERTIARY},
         // tilde
         {24, 1, HSV_ACCENT},
         // top row
@@ -59,8 +58,13 @@
         {17, 2, HSV_SECONDARY},
         {23, 2, HSV_SECONDARY},
         // RGB toggles
-        {19, 2, HSV_ACCENT},
-        {21, 2, HSV_ACCENT},
+        {19, 1, HSV_ACCENT},
+        {22, 1, HSV_ACCENT},
+        {25, 2, HSV_ACCENT},
+        // copypasta
+        {12, 1, HSV_TERTIARY},
+        {15, 1, HSV_TERTIARY},
+        {20, 2, HSV_TERTIARY},
         // media keys
         {8, 1, HSV_PRIMARY},
         {11, 1, HSV_PRIMARY},
@@ -78,8 +82,9 @@
     const rgblight_segment_t PROGMEM num_right_layer[] = RGBLIGHT_LAYER_SEGMENTS(
         {0,27,0,0,0},
         {0, 6, NUM_UNDERGLOW},
+        {13, 1, HSV_TERTIARY},
         // numbers
-        {9, 4, HSV_PRIMARY},
+        {10, 3, HSV_PRIMARY},
         {14, 7, HSV_PRIMARY},
         {23, 1, HSV_PRIMARY},
         // symbols
