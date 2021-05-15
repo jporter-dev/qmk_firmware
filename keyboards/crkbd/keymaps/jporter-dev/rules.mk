@@ -1,15 +1,28 @@
-RGBLIGHT_ENABLE 	= yes
-VIA_ENABLE			= no
-OLED_DRIVER_ENABLE	= yes
-LTO_ENABLE			= yes
-EXTRAKEY_ENABLE		= yes
-WPM_ENABLE			= yes
+MCU = atmega32u4
+BOOTLOADER = atmel-dfu
 
-# SRC +=  ./lib/glcdfont.c \
-#         ./lib/rgb_state_reader.c \
-#         ./lib/layer_state_reader.c \
-#         ./lib/logo_reader.c \
-#         ./lib/keylogger.c \
-        # ./lib/mode_icon_reader.c \
-        # ./lib/host_led_state_reader.c \
-        # ./lib/timelogger.c \
+RGBLIGHT_ENABLE = yes
+VIA_ENABLE = no
+OLED_DRIVER_ENABLE = yes
+LTO_ENABLE = yes
+EXTRAKEY_ENABLE = yes
+WPM_ENABLE = yes
+# added stuff to optimize compiled size
+AUDIO_ENABLE = no
+GRAVE_ESC_ENABLE = no
+COMMAND_ENABLE = no
+SPACE_CADET_ENABLE = no
+SPLIT_KEYBOARD_ENABLE = no
+UNICODE_ENABLE = no
+UNICODEMAP_ENABLE = no
+AUTO_SHIFT_ENABLE = no
+SWAP_HANDS_ENABLE = no
+CONSOLE_ENABLE = no
+COMBO_ENABLE = no
+BOOTMAGIC_ENABLE = no
+TAP_DANCE_ENABLE = no
+POINTING_DEVICE_ENABLE = no
+KEYLOGGER_ENABLE = no
+ifdef POINTING_DEVICE_ENABLE
+	SRC += i2c_master.c
+endif

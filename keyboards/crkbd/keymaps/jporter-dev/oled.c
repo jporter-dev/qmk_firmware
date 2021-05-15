@@ -161,7 +161,7 @@ bool isBarking = false;
 bool isJumping = false;
 bool showedJump = true;
 
-#ifndef BONGO_ENABLED
+#ifdef LUNA_ENABLED
 /* logic */
 static void render_luna(int LUNA_X, int LUNA_Y) {
 
@@ -389,7 +389,7 @@ void render_status_main(void) {
     render_default_layer_state();
     render_mod_status(get_mods());
 
-    #ifndef BONGO_ENABLED
+    #ifdef LUNA_ENABLED
     render_luna(0,13);
     #endif
 }
@@ -424,7 +424,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case LCTL_T(KC_SPC):
             if (record->event.pressed) {
                 my_hash_timer = timer_read();
-
                 isSneaking = true;
             } else {
                 if (timer_elapsed(my_hash_timer) < TAPPING_TERM) {
