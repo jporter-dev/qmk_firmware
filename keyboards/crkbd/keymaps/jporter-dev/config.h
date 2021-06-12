@@ -24,8 +24,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 
-#define MASTER_LEFT
-// #define MASTER_RIGHT
+// #define MASTER_LEFT
+#define MASTER_RIGHT
 // #define EE_HANDS
 
 #define USE_SERIAL_PD2
@@ -39,11 +39,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define TAPPING_FORCE_HOLD
 #define ONESHOT_TAP_TOGGLE 2
 
+#define AUTO_SHIFT_TIMEOUT 175
+#define NO_AUTO_SHIFT_SPECIAL
+
+#define MOUSEKEY_DELAY 0
+#define MOUSEKEY_INTERVAL 28
+
+#undef RGBLED_NUM
+#define RGBLED_NUM 27
+
 #ifdef RGBLIGHT_ENABLE
-    #undef RGBLED_NUM
     #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
     #define RGBLIGHT_LAYERS
-    #define RGBLED_NUM 27
     #define RGBLIGHT_LIMIT_VAL 120
 #endif
 
@@ -55,5 +62,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define _SYM 3
 #define _FN 4
 
-#define BONGO_ENABLED
-#define LUNA_ENABLED
+// COMMENT FOR CORNE LP!!!
+#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"

@@ -1,9 +1,22 @@
 #include QMK_KEYBOARD_H
-#include "rgb_layers.c"
-#include "oled.c"
 
+#ifdef RGBLIGHT_ENABLE
+#include "rgb_layers.c"
 // How long (in milliseconds) to wait between animation steps for each of the "Swirling rainbow" animations
 const uint8_t RGBLED_RAINBOW_SWIRL_INTERVALS[] PROGMEM = {75, 75, 75};
+#endif
+
+#ifdef OLED_DRIVER_ENABLE
+#include "oled.c"
+#endif
+
+#ifdef POINTING_DEVICE_ENABLE
+#include "pointing_device.h"
+#endif
+
+#ifdef PIMORONI_TRACKBALL_ENABLE
+#include "pimoroni.h"
+#endif
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_split_3x6_3(
@@ -49,3 +62,39 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return 250;
     }
 }
+
+#ifdef PIMORONI_TRACKBALL_ENABLE
+void pointing_device_task() {
+    report_mouse_t mouse_report = pointing_device_get_report();
+
+    if (is_keyboard_master()) {
+        process_mouse(&mouse_report);
+    }
+
+    switch (get_highest_layer(layer_state)) {
+        case _QWERTY:
+            trackball_set_rgbw(0,0,0,80);
+            break;
+        case _NUM:
+            trackball_set_rgbw(0,153,95,0);
+            break;
+        case _SYM:
+            trackball_set_rgbw(153,113,0,0);
+            break;
+        case _FN:
+            trackball_set_rgbw(153,0,113,0);
+            break;
+        default:
+            trackball_set_rgbw(0,0,0,0);
+    }
+
+    if (!layer_state_is(_QWERTY)) {
+        trackball_set_scrolling(true);
+    } else {
+        trackball_set_scrolling(false);
+    }
+
+    pointing_device_set_report(mouse_report);
+    pointing_device_send();
+}
+#endif
