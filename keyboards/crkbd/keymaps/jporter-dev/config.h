@@ -38,8 +38,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef PERMISSIVE_HOLD
 // #define TAPPING_FORCE_HOLD
 #define ONESHOT_TAP_TOGGLE 2
-#define AUTO_SHIFT_TIMEOUT 150
-#define NO_AUTO_SHIFT_SPECIAL
 
 #ifdef RGBLIGHT_ENABLE
     #undef RGBLED_NUM
@@ -49,13 +47,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define RGBLIGHT_LIMIT_VAL 120
 #endif
 
+#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
+
 #define _QWERTY 0
 #define _COLEMAK 1
 #define _NUM 2
 #define _SYM 3
 #define _FN 4
 
-// COMMENT FOR CORNE LP!!!
-// #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
-// #define BONGO_ENABLED // RIGHT HALF
-// #define LUNA_ENABLED // LEFT HALF
+#define BONGO_ENABLED
+#define LUNA_ENABLED
