@@ -130,7 +130,7 @@
 
     void keyboard_post_init_user(void) {
         // Enable the LED layers
-        if(is_master) {
+        if(!is_keyboard_master()) {
             rgblight_layers = left_rgb_layers;
         } else {
             rgblight_layers = right_rgb_layers;
