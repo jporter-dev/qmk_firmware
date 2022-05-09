@@ -36,8 +36,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define UNUSED_PINS
 
 /* Encoder pins */
-#define ENCODERS_PAD_A { E6 }
-#define ENCODERS_PAD_B { B4 }
+#define ENCODERS_PAD_A { E6, D2 }
+#define ENCODERS_PAD_B { B4, D3 }
 
 /* Encoder resolution */
 #define ENCODER_RESOLUTION 4
@@ -84,10 +84,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
-
-/* disable these deprecated features by default */
-#define NO_ACTION_MACRO
-#define NO_ACTION_FUNCTION
 
 /* Bootmagic Lite key configuration */
 #define BOOTMAGIC_LITE_ROW 0
