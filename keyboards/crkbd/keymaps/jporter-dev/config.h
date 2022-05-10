@@ -33,7 +33,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TOGGLE 2
 #define TAPPING_FORCE_HOLD_PER_KEY
 #define TAPPING_TERM_PER_KEY
-#define TAPPING_TERM 250
+#define TAPPING_TERM 200
 #define IGNORE_MOD_TAP_INTERRUPT
 #undef PERMISSIVE_HOLD
 // #define TAPPING_FORCE_HOLD
@@ -57,10 +57,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 
 #define _QWERTY 0
-#define _COLEMAK 1
-#define _NUM 2
-#define _SYM 3
-#define _FN 4
+#define _NUM 1
+#define _SYM 2
+#define _FN 3
 
 // COMMENT FOR CORNE LP!!!
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
