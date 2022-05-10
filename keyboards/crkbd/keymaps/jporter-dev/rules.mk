@@ -2,12 +2,12 @@ MCU = atmega32u4
 
 PROMICRO = no
 ###### v3
-# RGBLIGHT_ENABLE = yes
-# PIMORONI_TRACKBALL_ENABLE = no
-# BONGO_ENABLED = yes               ####### toggle this for left/right
+RGBLIGHT_ENABLE = yes
+PIMORONI_TRACKBALL_ENABLE = no
+# BONGO_ENABLED = yes               ####### toggle this for left/right. bongo is left.
 ###### LP
-PIMORONI_TRACKBALL_ENABLE = no      ####### toggle this for left/right
-BONGO_ENABLED = yes                 ####### toggle this for left/right
+# PIMORONI_TRACKBALL_ENABLE = no      ####### toggle this for left/right
+# BONGO_ENABLED = yes                 ####### toggle this for left/right
 
 OLED_DRIVER_ENABLE = yes
 
