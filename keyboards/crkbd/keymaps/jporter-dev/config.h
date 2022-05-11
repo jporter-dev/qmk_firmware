@@ -28,7 +28,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MASTER_RIGHT
 // #define EE_HANDS
 
-#define USE_SERIAL_PD2
+#define _QWERTY 0
+#define _NUM 1
+#define _SYM 2
+#define _FN 3
 
 #define TAPPING_TOGGLE 2
 #define TAPPING_FORCE_HOLD_PER_KEY
@@ -39,27 +42,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define TAPPING_FORCE_HOLD
 #define ONESHOT_TAP_TOGGLE 2
 
-#define AUTO_SHIFT_TIMEOUT 175
-#define NO_AUTO_SHIFT_SPECIAL
-
-#define MOUSEKEY_DELAY 0
-#define MOUSEKEY_INTERVAL 28
-
-#undef RGBLED_NUM
-#define RGBLED_NUM 27
-
-#ifdef RGBLIGHT_ENABLE
-    #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-    #define RGBLIGHT_LAYERS
-    #define RGBLIGHT_LIMIT_VAL 120
+#ifdef RGB_MATRIX_ENABLE
+    #define RGB_MATRIX_KEYPRESSES
+    #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+    #define RGB_DISABLE_WHEN_USB_SUSPENDED
+    #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
+    #define RGB_MATRIX_LED_FLUSH_LIMIT 16
+    #define RGB_MATRIX_HUE_STEP 8
+    #define RGB_MATRIX_SAT_STEP 8
+    #define RGB_MATRIX_VAL_STEP 5
+    #define RGB_MATRIX_SPD_STEP 10
+    // effects
+    #define ENABLE_RGB_MATRIX_MULTISPLASH
+    #define ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
+    #define ENABLE_RGB_MATRIX_DIGITAL_RAIN
+    #define ENABLE_RGB_MATRIX_CYCLE_OUT_IN_DUAL
+    #define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT
 #endif
 
-#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
-
-#define _QWERTY 0
-#define _NUM 1
-#define _SYM 2
-#define _FN 3
-
-// COMMENT FOR CORNE LP!!!
-#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
+// #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"

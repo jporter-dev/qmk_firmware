@@ -1,41 +1,15 @@
 #include QMK_KEYBOARD_H
 
-#ifdef RGBLIGHT_ENABLE
-#include "rgb_layers.c"
-// How long (in milliseconds) to wait between animation steps for each of the "Swirling rainbow" animations
-const uint8_t RGBLED_RAINBOW_SWIRL_INTERVALS[] PROGMEM = {75, 75, 75};
+#ifdef TAP_DANCE_ENABLE
+#include "tapdances.c"
 #endif
-
-#ifdef OLED_DRIVER_ENABLE
-#include "oled.c"
-#endif
-
-#ifdef POINTING_DEVICE_ENABLE
-#include "pointing_device.h"
-#endif
-
-#ifdef PIMORONI_TRACKBALL_ENABLE
-#include "pimoroni.h"
-#endif
-
-// tap dance
-enum {
-    TD_ESC_TAB,
-    TD_SEMI_QUOTE
-};
-
-qk_tap_dance_action_t tap_dance_actions[] = {
-    // Tap once for Escape, twice for Caps Lock
-    [TD_ESC_TAB] = ACTION_TAP_DANCE_DOUBLE(KC_TAB, KC_ESC),
-    [TD_SEMI_QUOTE] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_QUOT),
-};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_split_3x6_3(
         KC_NO, KC_Q, KC_W, KC_E, KC_R, KC_T,                                   /* */  KC_Y, KC_U, KC_I, KC_O, KC_P, KC_NO,
-        KC_NO, LGUI_T(KC_A), LCTL_T(KC_S), LALT_T(KC_D), LSFT_T(KC_F), KC_G,   /* */  KC_H, RSFT_T(KC_J), RALT_T(KC_K), RCTL_T(KC_L), RGUI_T(KC_QUOT), KC_NO,
+        KC_NO, LGUI_T(KC_A), LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G,   /* */  KC_H, RSFT_T(KC_J), RCTL_T(KC_K), RALT_T(KC_L), TD(TD_SEMI_QUOTE), KC_NO,
         KC_NO, KC_Z, KC_X, KC_C, KC_V,                                         /* */  KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
-                           TD(TD_ESC_TAB), LT(_NUM, KC_BSPC), LCTL_T(KC_SPC),  /* */  RCTL_T(KC_ENT), LT(_SYM, KC_DEL), RGUI_T(KC_GRAVE)
+                           TD(TD_ESC_TAB), LT(_NUM, KC_BSPC), LGUI_T(KC_SPC),  /* */  RGUI_T(KC_ENT), LT(_SYM, KC_DEL), RGUI_T(KC_GRAVE)
     ),
 
     [_NUM] = LAYOUT_split_3x6_3(
@@ -59,39 +33,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 KC_TRNS, KC_TRNS, KC_TRNS,  /* */   KC_TRNS, KC_TRNS, KC_TRNS
     )
 };
-
-#ifdef PIMORONI_TRACKBALL_ENABLE
-void pointing_device_task() {
-    report_mouse_t mouse_report = pointing_device_get_report();
-
-    if (is_keyboard_master()) {
-        process_mouse(&mouse_report);
-    }
-
-    switch (get_highest_layer(layer_state)) {
-        case _QWERTY:
-            trackball_set_rgbw(0,0,0,80);
-            break;
-        case _NUM:
-            trackball_set_rgbw(0,153,95,0);
-            break;
-        case _SYM:
-            trackball_set_rgbw(153,113,0,0);
-            break;
-        case _FN:
-            trackball_set_rgbw(153,0,113,0);
-            break;
-        default:
-            trackball_set_rgbw(0,0,0,0);
-    }
-
-    if (!layer_state_is(_QWERTY)) {
-        trackball_set_scrolling(true);
-    } else {
-        trackball_set_scrolling(false);
-    }
-
-    pointing_device_set_report(mouse_report);
-    pointing_device_send();
-}
-#endif
